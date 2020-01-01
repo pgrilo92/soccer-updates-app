@@ -7,9 +7,9 @@ var methodOverride = require('method-override')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-let leaguesRouter = require('./routes/leagues')
-let teamsRouter = require('./routes/teams')
-let playersRouter = require('./routes/players')
+// let leaguesRouter = require('./routes/leagues')
+// let teamsRouter = require('./routes/teams')
+// let playersRouter = require('./routes/players')
 
 require('dotenv').config()
 
