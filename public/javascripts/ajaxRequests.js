@@ -1,6 +1,8 @@
-let mainUrl = "http://v2.api-football.com/"
+let mainUrl = 'https://free-nba.p.rapidapi.com/' 
+let searchHandle = "?search="
 let searchLeagueUrl = "leagues/search/"
 let key = 'f83d6f7d08b762ea607cf55201b54cc8'
+let key2 = '7e805c7225mshc1068149de6b799p16bd57jsnd12d02db5465'
 
 $('form').on('submit', function(e) {
     e.preventDefault()
@@ -8,25 +10,52 @@ $('form').on('submit', function(e) {
     let userData = userInput.split(' ').join('_')
 
     $.ajax({
+        async: true,
+        crossDomain: true,
+        url: "https://api-football-v1.p.rapidapi.com/v2/leagues/search/" + userData,
         method: "GET",
-        //data: {signature: authHeader},
-        url: mainUrl + searchLeagueUrl + userData,
-        dataType: 'json',
-        beforeSend: function(xhr) {
-            xhr.setRequestHeader('X-RapidAPI-Key', key)
+        headers: {
+            "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
+            "x-rapidapi-key": key2
         },
-        sucess: function(json) {
-            $('').html('')
-            onSuccess(json)
+        success: function(json) {
+            $('#search-results').html('')
+            onSuccessLeague(json)
         },
         error: onError
     })
 })
 
+
+$.ajax({
+    async: true,
+    crossDomain: true,
+    url: "https://api-football-v1.p.rapidapi.com/v2/topscorers/524",
+    method: "GET",
+    headers: {
+        "x-rapidapi-host": "api-football-v1.p.rapidapi.com",
+		"x-rapidapi-key": key2
+    },
+    success: function(json) {
+        $('#search-results').html('')
+        onSuccess(json)
+    },
+    error: onError
+})
+function onSuccessLeague(json) {
+    
+        json.api.leagues.forEach(function(league) {
+            $("#search-results").append(`
+            <p>Player: ${league.name}</p>
+            <img src="${league.logo}" class="img-fluid">
+            `)    
+        })
+}
 function onSuccess(json) {
-    json.date.forEach(function(league) {
+    
+    json.api.topscorers.forEach(function(player) {
         $("#search-results").append(`
-        <div>${league.name}</div>
+        <p>Player: ${player.player_name} ${player.goals.total} Team: ${player.team_name} </p>
         `)
     })
 }
