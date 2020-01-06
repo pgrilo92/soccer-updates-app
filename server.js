@@ -4,15 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var methodOverride = require('method-override')
-//var cors = require('cors');
+
 require('dotenv').config()
+require('./config/database')
 
 var indexRouter = require('./routes/index');
 var playersRouter = require('./routes/players');
 var usersRouter = require('./routes/users');
-// let leaguesRouter = require('./routes/leagues')
-// let teamsRouter = require('./routes/teams')
-// let playersRouter = require('./routes/players')
+
 
 var app = express();
 

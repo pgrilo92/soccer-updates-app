@@ -20,7 +20,7 @@ let find = (req, res) => {
     //     .catch((error)=> {
     //       console.log(error)
     //     })
-    res.render('players/index', {title: "NBA Updates"})
+    res.render('players/index', {title: "Top Scorers"})
 }
     
 module.exports = {
