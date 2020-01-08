@@ -2,16 +2,21 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+let session = require('express-session');
+let passport = require('passport')
 var logger = require('morgan');
-var methodOverride = require('method-override')
+let methodOverride = require('method-override')
+let cors = require('cors')
 
 require('dotenv').config()
 require('./config/database')
+require('./config/passport')
 
-var indexRouter = require('./routes/index');
-var playersRouter = require('./routes/players');
-var usersRouter = require('./routes/users');
-
+let indexRouter = require('./routes/index');
+let playersRouter = require('./routes/players');
+let usersRouter = require('./routes/users');
+//let dashboardsRouter = require('./routes/dashboards')
+let apiRouter = require('./routes/api')
 
 var app = express();
 
@@ -24,11 +29,21 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(session({
+  secret: 'SoccerUpdates',
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors())
 
 app.use('/', indexRouter);
 app.use('/players', playersRouter);
-app.use('/users', usersRouter);
+app.use('/', usersRouter);
+app.use('/api', apiRouter)
+//app.use('/dashboards', dashboardsRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

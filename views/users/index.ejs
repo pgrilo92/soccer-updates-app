@@ -1,0 +1,9 @@
+<%- include('../partials/head') %>
+<li>
+    <% if (user) { %>
+        <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+    <% } else { %>
+        <a href="/auth/google">Login with Google</a>
+    <% } %>
+    </li>
+<%- include('../partials/footer') %>
