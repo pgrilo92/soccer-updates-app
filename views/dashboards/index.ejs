@@ -1,18 +1,21 @@
 <%- include('../partials/head') %>
-    <div class="index-dashboards">
+    <div class="row" id="index-dashboards">
 
     </div>
     
     <form id="creating-dashboard">
         <div class="form-group">
-            <label for="selectLeague">Select League</label>
-            <select class="form-control" id="selectLeague">
-                <option value="premier_league">Premier League</option>
-                <option value="la_liga">La Liga</option>
-                <option value="serie_a">Serie A</option>
-                <option value="ligue_1">Ligue 1</option>
+            <label for="select-league">Select League</label>
+            <select class="form-control select-league" name="selectLeague" id="selectLeague">
+                <option value="524">Premier League</option>
+                <option value="775">La Liga</option>
+                <option value="891">Serie A</option>
+                <option value="525">Ligue 1</option>
             </select>
         </div>
+        <input type="hidden" id="league-name" name="league-name" value="">
+        <input type="hidden" id="league-logo" name="league-logo" value="">
+        <input type="hidden" id="league-country" name="league-country" value="">
         <input class="btn btn-primary"  type="submit">
     </form>
 <%- include('../partials/footer') %>

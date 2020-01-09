@@ -2,6 +2,7 @@ const Dashboard = require('../models/dashboard')
 
 const getAllDashboards = (req, res) => {
     Dashboard.find({}).then((dashboards) => {
+        console.log(dashboards)
         res.status(200).json(dashboards)
     })
 }

@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const dashboardCtrl = require('../controllers/dashboards')
+let usersCtrl = require('../controllers/users')
+
+router.get('/users', usersCtrl.index)
 
 router.get('/', (req, res) => {
     res.render('dashboards/index')

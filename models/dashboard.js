@@ -15,11 +15,14 @@ const teamSchema = new Schema({
 const dashboardSchema = new Schema({
     league: {
         type: String,
-        enum: ['Premier League', 'La Liga', 'Serie A', 'Ligue 1']
+        //enum: ['premier_league', 'la_liga', 'Serie_A', 'ligue_1']
     },
     league_id: Number,
     logo: String,
-    season: Number,
+    season: { 
+        type: Number,
+        default: 2019
+    },
     country: String,
     teams: [teamSchema]
 }, {
