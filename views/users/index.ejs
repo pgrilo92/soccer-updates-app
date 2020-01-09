@@ -1,7 +1,12 @@
 <%- include('../partials/head') %>
 <li>
     <% if (user) { %>
-        <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
+        <a href="/logout">Log Out</a>
+        <img src="<%= user.avatar %>" >
+    <p>Name:  <%= user.name %></p>
+    <% user.dashboards.forEach((dashboard) => { %> 
+    <p>Dashboards: <%= dashboard.league %></p>
+    <% }) %>
     <% } else { %>
         <a href="/auth/google">Login with Google</a>
     <% } %>

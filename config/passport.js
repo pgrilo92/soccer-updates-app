@@ -1,6 +1,6 @@
 let passport = require('passport');
 let GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-let user = require('../models/user');
+let User = require('../models/user');
 
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT,
@@ -8,7 +8,7 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.GOOGLE_CALLBACK
     },
     function(accessToken, refreshToken, profile, cb) {
-        user.findOne({ 'googleId': profile.id }, function(err, user) {
+        User.findOne({ 'googleId': profile.id }, function(err, user) {
             if (err) return cb(err);
             if (user) {
                 if (!user.avatar) {
@@ -38,7 +38,7 @@ passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
 passport.deserializeUser(function(id, done) {
-    user.findById(id, function(err, user) {
+    User.findById(id, function(err, user) {
         done(err, user);
     });
 });

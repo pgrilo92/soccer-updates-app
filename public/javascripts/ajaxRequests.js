@@ -2,7 +2,7 @@ let mainUrl = 'https://api-football-v1.p.rapidapi.com/v2/'
 let searchLeagueUrl = "leagues/search/"
 let key2 = '7e805c7225mshc1068149de6b799p16bd57jsnd12d02db5465'
 
-$('form').on('submit', function(e) {
+$('search-form').on('submit', function(e) {
     e.preventDefault()
     let userInput = $('#search').val()
     let userData = userInput.split(' ').join('_')
@@ -24,7 +24,8 @@ $('form').on('submit', function(e) {
     })
 })
 
-$('form').on('submit', function(e) {
+$('search-form').on('submit', function(e) {
+    e.preventDefault()
     $.ajax({
         async: true,
         crossDomain: true,
