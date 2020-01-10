@@ -1,7 +1,5 @@
 const mongoose = require('mongoose')
 
-const db = process.env.MONGODB_URL;
-
 mongoose.connect('mongodb+srv://pgrilo92:<camera92>@soccer-database-vwsyo.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -13,7 +11,6 @@ mongoose.connect('mongodb+srv://pgrilo92:<camera92>@soccer-database-vwsyo.mongod
 //     useCreateIndex: true
 // })
 
-const db = mongoose.connection
 
 db.on('connected', () => {
     console.log(`Mongoose is connected ${db.host}:${db.port}`)
