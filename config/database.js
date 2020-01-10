@@ -10,8 +10,3 @@ mongoose.connect('mongodb+srv://pgrilo92:<camera92>@soccer-database-vwsyo.mongod
 //     useUnifiedTopology: true,
 //     useCreateIndex: true
 // })
-
-
-db.on('connected', () => {
-    console.log(`Mongoose is connected ${db.host}:${db.port}`)
-})
