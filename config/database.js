@@ -1,11 +1,24 @@
 const mongoose = require('mongoose')
 
-mongoose.connect("mongodb+srv://pgrilo92:<camera92>@soccer-database-vwsyo.mongodb.net/test?retryWrites=true&w=majority", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
-})
-//'mongodb://localhost/soccerupdatesdb'
+const db = process.env.MONGODB_URL;
+
+const connectDB = async () => {
+  try {
+    await mongoose.connect(db, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true
+    });
+    console.log("MongoDB is Connected...");
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
+};
+// mongoose.connect('mongodb://localhost/soccerupdatesdb', {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true
+// })
 
 const db = mongoose.connection
 
