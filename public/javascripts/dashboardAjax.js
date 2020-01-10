@@ -6,6 +6,7 @@ loadAllDashboards()
 function loadAllDashboards() {
     $('#index-dashboards').html('')
     $('#creating-dashboard').show()
+    $('#editing-dashboard').hide()
     $.ajax({
         url: "api/dashboards",
         method: "GET",
@@ -57,7 +58,7 @@ function loadAllOnSuccess(json) {
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Country: ${dashboard.country}</li>
                 </ul>
-                <button class="btn btn-warning" onclick="editData('${dashboard._id}', ${dashboard})">Edit</button>
+                <button class="btn btn-warning" onclick="editData('${dashboard._id}')">Edit</button>
                 <button class="btn btn-danger" onclick="deleteData('${dashboard._id}')">Delete</button>
             </div>
         `)
@@ -96,29 +97,51 @@ function postFunct() {
 }
 //optional loading message
 function beforeSuccess() {
-    $("#index-dashboards").append(`<div id="loading"> Loading</div> `)
+    $('#close-alert').remove()
+    $(".notifications").append(`<div class="spinner-border" role="status" id="loading-sign">
+                                        <span class="sr-only">Loading...</span>
+                                    </div> 
+                                `)
 }
 //remove loading message
 function completed() {
-    $("#loading").remove()
+  $('#loading-sign').remove()
+    $(".notifications").append(`
+    <div class="alert alert-success alert-dismissible fade show" id="close-alert" role="alert">
+  <strong>Successful</strong> 
+  <button onclick="closeNotification()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+`)
+}
+function closeNotification () {
+    $('#close-alert').remove()
 }
 //edit function call from button in html
-function editData(id, body) {
+function editData() {
+    $('#editing-dashboard').show()
+}
+    let dashboard = {
+        league_id:  $('select.select-league').children("option:selected").val()
+    }
+    $('#editing-dashboard').on('submit', function () {
     $.ajax({
         url: '/api/dashboards/' + id,
         method: "PUT",
-        success: loadAllDashboards(),
+        dataType: 'json',
+        data: dashboard,
+        success: loadDashboard(json),
         error: onError,
+        complete: $('editing-dashboard').hide()
     })
-}
+})
+
 //delete function call from button in html
 function deleteData(id) {
     $.ajax({
         url: '/api/dashboards/' + id,
         method: "DELETE",
-        success: 
-            $(this).remove()
-        ,
+        success: loadAllDashboards,
         error: onError,
     })
 }
