@@ -1,16 +1,33 @@
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #00B7FF;
+  text-align: center;
 }
 a {
   color: #00B7FF;
 }
 .main-div {
-  padding: 50px;
+  margin: 50px;
 }
-.index-dashboards {
+#index-dashboards {
   color: blue;
+  margin: 10px;
+}
+.card-img-top {
+  height: 200px;
+  width: 100px;
+  padding: 10px;
+}
+.card {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+.row {
+  justify-content: center;
 }

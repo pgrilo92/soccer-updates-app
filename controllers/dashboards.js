@@ -2,7 +2,6 @@ const Dashboard = require('../models/dashboard')
 
 const getAllDashboards = (req, res) => {
     Dashboard.find({}).then((dashboards) => {
-        console.log(dashboards)
         res.status(200).json(dashboards)
     })
 }
@@ -15,7 +14,6 @@ const getOneDashboard = (req, res) => {
 
 const createDashboard = (req, res) => {
     Dashboard.create(req.body).then((dashboard) => {
-        console.log(dashboard)
         res.status(201).json(dashboard)
     })
 }
