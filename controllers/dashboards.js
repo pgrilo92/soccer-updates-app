@@ -1,4 +1,22 @@
 const Dashboard = require('../models/dashboard')
+// const axios = require('axios')
+// let key = process.env.FOOTBALL_API_KEY
+
+// axios({
+//     "method":"GET",
+//     "url":"https://api-football-v1.p.rapidapi.com/v2/" + ,
+//     "headers":{
+//     "content-type":"application/octet-stream",
+//     "x-rapidapi-host":"api-football-v1.p.rapidapi.com",
+//     "x-rapidapi-key":key
+//     }
+//     })
+//     .then((response)=>{
+//       console.log(response)
+//     })
+//     .catch((error)=>{
+//       console.log(error)
+//     })
 
 const getAllDashboards = (req, res) => {
     Dashboard.find({}).then((dashboards) => {

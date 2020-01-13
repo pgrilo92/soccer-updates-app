@@ -4,7 +4,7 @@ let key3 = '7e805c7225mshc1068149de6b799p16bd57jsnd12d02db5465'
 loadAllDashboards()
 //run as soon as page is loaded
 function loadAllDashboards() {
-    $('#index-dashboards').html('')
+   // $('#index-dashboards').html('')
     $('#creating-dashboard').show()
     $('#editing-dashboard').hide()
     $.ajax({
@@ -119,12 +119,16 @@ function closeNotification () {
 }
 //edit function call from button in html
 function editData() {
-    $('#editing-dashboard').show()
-}
+    //$('#editing-dashboard').show()
+//}
     let dashboard = {
-        league_id:  $('select.select-league').children("option:selected").val()
+        league_id:  $('select.select-league').children("option:selected").val(),
+        id: json._id,
+        league:  $('#league-name').val(),
+        logo: $('#league-logo').val(),
+        country: $('#league-country').val()
     }
-    $('#editing-dashboard').on('submit', function () {
+    //$('#editing-dashboard').on('submit', function () {
     $.ajax({
         url: '/api/dashboards/' + id,
         method: "PUT",
@@ -132,9 +136,9 @@ function editData() {
         data: dashboard,
         success: loadDashboard(json),
         error: onError,
-        complete: $('editing-dashboard').hide()
+       // complete: $('editing-dashboard').hide()
     })
-})
+}
 
 //delete function call from button in html
 function deleteData(id) {
@@ -173,6 +177,21 @@ function loadDashboard(json) {
         <button class="btn btn-warning" onclick="editData('${json._id}', ${json})">Edit</button>
         <button class="btn btn-danger" onclick="deleteData('${json._id}')">Delete</button>
     </div>
+    <form id="editing-dashboard">
+    <div class="form-group">
+        <label for="select-league">Select League</label>
+        <select class="form-control select-league" name="selectLeague" id="selectLeague">
+            <option value="524">Premier League</option>
+            <option value="775">La Liga</option>
+            <option value="891">Serie A</option>
+            <option value="525">Ligue 1</option>
+        </select>
+    </div>
+    <input type="hidden" id="league-name" name="league-name" value="">
+    <input type="hidden" id="league-logo" name="league-logo" value="">
+    <input type="hidden" id="league-country" name="league-country" value="">
+    <input onclick="editData('${json._id}', ${json})" class="btn btn-primary" type="submit"  value="Update">
+</form>
     `)
 }
 function onError(xhr, status, errorThrown) {

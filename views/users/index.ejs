@@ -1,4 +1,7 @@
 <%- include('../partials/head') %>
+<div>
+    <h3>Register to follow your favourite soccer teams!</h3>
+</div>
 <% if (user) { %>
     <div class="row">
         <div class="card" style="width: 18rem;">
@@ -10,11 +13,12 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><a href="/dashboards">Dashboards</a></li>
             </ul>
-            <a class="btn btn-dabger" href="/logout">Log Out</a>
+            <a class="btn btn-danger" href="/logout">Log Out</a>
         </div>
     </div>
-        <% } else { %>
-            <a href="/auth/google">Login with Google</a>
-        <% } %>
-
+<% } else { %>
+    <div class="login-btn">
+        <a class="btn btn-primary" href="/auth/google">Login with Google</a>
+    </div>
+<% } %>
 <%- include('../partials/footer') %>

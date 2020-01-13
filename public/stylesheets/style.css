@@ -31,3 +31,9 @@ a {
 .row {
   justify-content: center;
 }
+.login-btn {
+  display: flex;
+  justify-content: center;
+  background: #d4d4d4;
+  padding: 50px;
+}

@@ -24,7 +24,7 @@ $('search-form').on('submit', function(e) {
     })
 })
 
-$('search-form').on('submit', function(e) {
+$('#search-form').on('submit', function(e) {
     e.preventDefault()
     $.ajax({
         async: true,
