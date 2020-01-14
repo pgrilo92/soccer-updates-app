@@ -1,15 +1,28 @@
 const Dashboard = require('../models/dashboard')
-// const axios = require('axios')
-// let key = process.env.FOOTBALL_API_KEY
-
-// axios({
-//     "method":"GET",
-//     "url":"https://api-football-v1.p.rapidapi.com/v2/" + ,
-//     "headers":{
+const axios = require('axios')
+let key = process.env.FOOTBALL_API_KEY
+// let headers = {
 //     "content-type":"application/octet-stream",
 //     "x-rapidapi-host":"api-football-v1.p.rapidapi.com",
 //     "x-rapidapi-key":key
 //     }
+
+//     function onSuccessLeague(json) {
+    
+//         $('#league-name').val(json.api.leagues[0].name)
+//         $('#league-logo').val(json.api.leagues[0].logo)
+//         $('#league-country').val(json.api.leagues[0].country)
+//     }
+//     function onError(xhr, status, errorThrown) {
+//         alert("Sorry, there was a problem!");
+//         console.log("Error: " + errorThrown);
+//         console.log("Status: " + status);
+//         console.dir(xhr);
+//     }
+// axios({
+//     "method":"GET",
+//     "url":"https://api-football-v1.p.rapidapi.com/v2/",
+//     headers
 //     })
 //     .then((response)=>{
 //       console.log(response)
