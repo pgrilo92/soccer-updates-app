@@ -3,9 +3,9 @@
 ## Intro
 This web app will allow users to login through Google OAUTH. Each user will be create a dashboard, Each dashboard will represent one of the top 4 soccer leagues. Within these dashboards users will be able to follow specific teams.
 
-![Image of Soccer Updates](https://imgur.com/T3YhKBv)
-![Image of Second Soccer Updates](https://imgur.com/gd3cdOb)
-![Image of OAUTH](https://imgur.com/undefined)
+![Image of Soccer Updates](https://imgur.com/T3YhKBv.png)
+![Image of Second Soccer Updates](https://imgur.com/gd3cdOb.png)
+![Image of OAUTH](https://imgur.com/svfchZD)
 
 ## Technologies Used
 1. Used JavaScript Express with NodeJS for backend
