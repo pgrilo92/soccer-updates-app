@@ -5,7 +5,7 @@ This web app will allow users to login through Google OAUTH. Each user will be c
 
 ![Image of Soccer Updates](https://imgur.com/T3YhKBv.png)
 ![Image of Second Soccer Updates](https://imgur.com/gd3cdOb.png)
-![Image of OAUTH](https://imgur.com/svfchZD)
+![Image of OAUTH](https://imgur.com/svfchZD.png)
 
 ## Technologies Used
 1. Used JavaScript Express with NodeJS for backend
